@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseNotFound,HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
+
 # creat a dictonary for all months
 
 monthly_challenges  = {
@@ -19,7 +21,6 @@ monthly_challenges  = {
 }
 
 # Creat a First View & URL
-
 
 def index(request):
        list_items= ""
@@ -42,10 +43,10 @@ def monthly_challeng_bu_number(request, month):
 def monthly_challeng(request, month):
        try:
              challenge_text = monthly_challenges[month]
-             response_text = f"<h1>{challenge_text}</h1>"
+             response_text = render_to_string("challenges/challenge.html")
              return HttpResponse(response_text)
        except:   
-            return HttpResponseNotFound("<h1>This Month is not supported!</h1>")
+             return HttpResponseNotFound("<h1>This Month is not supported!</h1>")
 
             
 
