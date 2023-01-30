@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monthly Challeng</title>
-</head>
-<body>
-  <h1>This Month's Challenge</h1>
-  <h2>Walk for at least 20 minutes every day!</h2>
-</body>
-</html>
+  {% extends 'base.html' %}
+      {% block page_title%}
+      {{month_name | title}}
+  {% endblock%}
+
+  {% block content%}
+        <h1> {{month_name | title}} Challenge</h1>
+        {% if text is not None %}
+        <h2>{{text | title}}</h2>
+        {% else %}
+       <p>there is no challenge for this month yet !</p>
+       {% endif %}
+
+  {% endblock%}
