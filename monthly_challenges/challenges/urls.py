@@ -8,7 +8,7 @@ from . import views
 #creat a list for all routes we need
 
 urlpatterns = [
-  path("",views.index),
+  path("",views.index, name="index"),
   path("<int:month>", views.monthly_challeng_bu_number),
   path("<str:month>", views.monthly_challeng, name= "my-challeng")
 ]
